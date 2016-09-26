@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+       <camel:camelContext id="mycamelcontext">
+       	<camel:route id="mycamelroute">
+       		<camel:from uri="direct:start"></camel:from>
+       		<camel:to uri="cxf://http://localhost:8080/example-camel-cxf/greeting?serviceClass=com.camel.eap.cxf.GreetingService""></camel:to>
+       		<camel:log message="The body is : ${body}"></camel:log>
+       	</camel:route>
+       </camel:camelContext>
+</beans>
